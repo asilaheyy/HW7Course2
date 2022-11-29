@@ -5,11 +5,9 @@ public class Product {
     private final String product;
 
     private final float price;
-    private final float kg;
 
-    private boolean checked;
 
-    public Product(String product, float price, float kg) {
+    public Product(String product, float price) {
         this.product = product;
         if (this.product == null || this.product.isEmpty()) {
             throw new IllegalArgumentException("Укажите продукт");
@@ -18,11 +16,6 @@ public class Product {
         if (this.price == 0) {
             throw new IllegalArgumentException("Укажите стоимость");
         }
-        this.kg = kg;
-        if (this.kg == 0) {
-            throw new IllegalArgumentException("Укажите необходимое количество");
-        }
-        this.checked = false;
 
     }
 
@@ -34,22 +27,12 @@ public class Product {
         return price;
     }
 
-    public float getKg() {
-        return kg;
-    }
 
-    public boolean isChecked() {
-        return checked;
-    }
 
-    public void setChecked() {
-        this.checked = checked;
-    }
 
     @Override
     public String toString() {
-        String checkedString = this.isChecked() ? "Yes" : "No";
-        return String.format("%s, Цена: %s, Количество: %s, Куплен: %s", this.product, this.price, this.kg, checkedString);
+        return String.format("%s, Цена: %s", this.product, this.price);
     }
 
     @Override

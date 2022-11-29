@@ -7,12 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
         Set<Product> set = new HashSet<>();
-        Product banana = new Product("Банан", 1.0f, 0.3f);
+        Product banana = new Product("Банан", 1.0f);
         //Product banana2= new Product("Банан", 1.0f, 0.3f);
-        Product bread = new Product("Хлеб", 2.22f, 0.2f);
-        Product milk = new Product("Молоко", 1.09f, 2.0f);
-        Product apples = new Product("Яблоки", 1.44f, 1.0f);
-        Product coffee = new Product("Кофе", 3.33f, 2.0f);
+        Product bread = new Product("Хлеб", 2.22f);
+        Product milk = new Product("Молоко", 1.09f);
+        Product apples = new Product("Яблоки", 1.44f);
+        Product coffee = new Product("Кофе", 3.33f);
 
         set.add(banana);
         set.add(bread);
@@ -20,6 +20,9 @@ public class Main {
         set.add(apples);
         set.add(coffee);
         set.add(coffee);
+
+
+
 
         System.out.println(Arrays.toString(set.toArray()));
 

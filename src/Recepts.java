@@ -1,42 +1,48 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recepts {
 
-    private Set<Product> products;
-    private float calculatePrice;
+    private final Map<Product, Integer> products = new HashMap<>();
     private String receptName;
 
-    public Recepts( String receptName,Set<Product> products) {
+    public Recepts(String receptName) {
+        if (receptName == null || receptName.isEmpty()) {
+            throw new IllegalArgumentException("");
+        }
         this.receptName = receptName;
-        this.products = products;
     }
 
-    public float getCost(){
-        float calculatePrice = 0;
-        for(Product product : products){
-            calculatePrice += product.getPrice();
+    public void addProduct(Product product, int quantity) {
+        if (quantity <= 0){
+            quantity = 1;
         }
-        return calculatePrice;
+        if (this.products.containsKey(product)) {
+            this.products.put(product, this.products.get(product) + quantity);
+        } else {
+            this.products.put(product, quantity);
+        }
+
     }
+
+    public float getPrice(){
+        float sum = 0;
+        for(Map.Entry<Product, Integer> product : this.products.entrySet()){
+            sum += product.getKey().getPrice() * product.getValue();
+        }
+        return sum;
+    }
+
 
     public String getReceptName() {
         return receptName;
     }
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public float getCalculatePrice() {
-        return calculatePrice;
-    }
-
     @Override
     public String toString() {
-        return receptName + " ингредиенты: "+ products;
+        return "Recepts{" +
+                "products=" + products +
+                ", receptName='" + receptName + '\'' +
+                '}';
     }
 
     @Override
